@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Dialer</title>
+    <style>
+        .dialer {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 200px;
+            margin: auto;
+        }
+
+        .dialer td {
+            flex: 1 0 33.33%;
+            padding: 25px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        textarea {
+            overflow: auto;
+            resize: none;
+            width: 186px;
+            height: 20px;
+            border: 5px solid green;
+            /* padding:10px; */
+        }
+
+        table {
+            background: linear-gradient(red, orange, pink);
+            padding: 2px;
+            border: 7px groove rgb(29, 207, 239);
+        }
+
+        td {
+            background: radial-gradient(yellow, rgb(117, 174, 117), rgb(64, 64, 149));
+        }
+
+        button {
+            background: linear-gradient(gray, pink, gray);
+            border: 3px groove red;
+            width: 2000px;
+            padding: 3px;
+        }
+
+        #phoneNumber {
+            color: blue;
+            font-size: 15px;
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+        <h2>Phone Dialer</h2>
+
+    <form action="" class="form">
+        <div class="dialer">
+            <textarea name="phoneNumber" cols="23" rows="3" type="text" id="phoneNumber" placeholder="Phone number"
+                onfocus="myColor()"></textarea>
+            <p id="demo"></p>
+            <table>
+                <tr>
+                    <td onclick="store(1)">1</td>
+                    <td onclick="store(2)">2</td>
+                    <td onclick="store(3)">3</td>
+                </tr>
+                <tr>
+                    <td onclick="store(4)">4</td>
+                    <td onclick="store(5)">5</td>
+                    <td onclick="store(6)">6</td>
+                </tr>
+                <tr>
+                    <td onclick="store(7)">7</td>
+                    <td onclick="store(8)">8</td>
+                    <td onclick="store(9)">9</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td onclick="store(0)">0</td>
+                    <td>#</td>
+                </tr>
+            </table>
+            <br>
+            <button type="submit">Check</button>
+        </div>
+    </form>
+    <script>
+        function store(number) {
+            var phoneNumberInput = document.getElementById("phoneNumber");
+            phoneNumberInput.value += number;
+        }
+        function myColor() {
+            document.getElementById("phoneNumber").style.cssText = "color: red; background-color: yellow";
+        }
+
+        let form = document.querySelector("form");
+        let userName = document.querySelector("#phoneNumber");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            showName();
+        });
+
+        function showName() {
+            const userList = [
+                {
+                    name: 'Riya',
+                    number: 7878787788
+                },
+                {
+                    name: 'siya',
+                    number: 9172478287
+                }
+            ]
+            let userNameValue = userName.value.trim();
+            let demo = document.getElementById('demo');
+            for (let i = 0; i < userList.length; i++) {
+                console.log(i)
+                if (userNameValue == userList[i].number) {
+                    document.getElementById('demo').innerHTML = userList[i].name
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
